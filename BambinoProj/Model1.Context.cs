@@ -13,10 +13,10 @@ namespace BambinoProj
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbEntities1 : DbContext
+    public partial class dbEntities : DbContext
     {
-        public dbEntities1()
-            : base("name=dbEntities1")
+        public dbEntities()
+            : base("name=dbEntities")
         {
         }
     
@@ -29,5 +29,6 @@ namespace BambinoProj
         public virtual DbSet<productExtraData> productExtraData { get; set; }
         public virtual DbSet<productTBL> productTBL { get; set; }
         public virtual DbSet<productTypeTBL> productTypeTBL { get; set; }
+        public virtual DbSet<productView> productView { get; set; }
     }
 }

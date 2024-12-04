@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BambinoProj.Forms;
+using BambinoProj.Forms.ProductForms;
+using BambinoProj.IFS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,7 @@ namespace BambinoProj
 {
     public partial class mainWin : Form
     {
+        Form current = null;
         public mainWin()
         {
             InitializeComponent();
@@ -27,11 +31,6 @@ namespace BambinoProj
 
         }
 
-        private void kryptonRibbonGroupButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void kryptonRibbonGroupButton2_Click(object sender, EventArgs e)
         {
 
@@ -39,7 +38,8 @@ namespace BambinoProj
 
         private void mainWin_Load(object sender, EventArgs e)
         {
-
+            DBhelper.init();
+           
         }
 
         private void ID__TextChanged(object sender, EventArgs e)
@@ -71,5 +71,162 @@ namespace BambinoProj
         {
 
         }
+
+        private void הוספתמוצרToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is addProductWin)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new addProductWin()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        }
+
+        private void updateProductwin_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is addProductTypeWIN)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new addProductTypeWIN()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        }
+
+        private void מאפיינימוצרToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is characteristicsProductWin)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new characteristicsProductWin()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        }
+
+        private void מידענוסףלמוצרToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is addExtraData)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new addExtraData()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        
+    }
     }
 }

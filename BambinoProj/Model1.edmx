@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="prodExtraKeys">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,6 +30,7 @@
           <Property Name="prodName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
           <Property Name="typeID" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="productTypeTBL">
           <Key>
@@ -38,6 +39,26 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\MAGSHIMIM_AI\SOURCE\REPOS\BAMBINOPROJ\BAMBINOPROJ\DB.MDF.dbo.productView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="productView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="prodName" />
+            <PropertyRef Name="KeyName" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="typeName" />
+            <PropertyRef Name="productID" />
+            <PropertyRef Name="keyID" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="prodName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KeyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="productID" Type="int" Nullable="false" />
+          <Property Name="keyID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_productExtraData_ToMetaKeys">
           <End Role="prodExtraKeys" Type="Self.prodExtraKeys" Multiplicity="1" />
@@ -80,6 +101,17 @@
           <EntitySet Name="productExtraData" EntityType="Self.productExtraData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="productTBL" EntityType="Self.productTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="productTypeTBL" EntityType="Self.productTypeTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productView" EntityType="Self.productView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [productView].[Id] AS [Id], 
+    [productView].[prodName] AS [prodName], 
+    [productView].[KeyName] AS [KeyName], 
+    [productView].[value] AS [value], 
+    [productView].[typeName] AS [typeName], 
+    [productView].[productID] AS [productID], 
+    [productView].[keyID] AS [keyID]
+    FROM [dbo].[productView] AS [productView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_productExtraData_ToMetaKeys" Association="Self.FK_productExtraData_ToMetaKeys">
             <End Role="prodExtraKeys" EntitySet="prodExtraKeys" />
             <End Role="productExtraData" EntitySet="productExtraData" />
@@ -93,19 +125,39 @@
             <End Role="productTBL" EntitySet="productTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+         
+          <EntitySet Name="prodExtraKeys" EntityType="dbModel.prodExtraKeys" />
+          <EntitySet Name="productExtraData" EntityType="dbModel.productExtraData" />
+          <EntitySet Name="productTBL" EntityType="dbModel.productTBL" />
+          <EntitySet Name="productTypeTBL" EntityType="dbModel.productTypeTBL" />
+          <EntitySet Name="productView" EntityType="dbModel.productView" />
+          <AssociationSet Name="FK_productExtraData_ToMetaKeys" Association="dbModel.FK_productExtraData_ToMetaKeys">
+            <End Role="prodExtraKeys" EntitySet="prodExtraKeys" />
+            <End Role="productExtraData" EntitySet="productExtraData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productExtraData_ToproductTBL" Association="dbModel.FK_productExtraData_ToproductTBL">
+            <End Role="productTBL" EntitySet="productTBL" />
+            <End Role="productExtraData" EntitySet="productExtraData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productTBL_ToProdTypeTBL" Association="dbModel.FK_productTBL_ToProdTypeTBL">
+            <End Role="productTypeTBL" EntitySet="productTypeTBL" />
+            <End Role="productTBL" EntitySet="productTBL" />
+          </AssociationSet>
+          </EntityContainer>
+       
         <EntityType Name="prodExtraKeys">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KeyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KeyDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="productExtraData" Relationship="Self.FK_productExtraData_ToMetaKeys" FromRole="prodExtraKeys" ToRole="productExtraData" />
+          <NavigationProperty Name="productExtraData" Relationship="dbModel.FK_productExtraData_ToMetaKeys" FromRole="prodExtraKeys" ToRole="productExtraData" />
         </EntityType>
         <EntityType Name="productExtraData">
           <Key>
@@ -114,33 +166,52 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="productID" Type="Int32" Nullable="false" />
           <Property Name="keyID" Type="Int32" Nullable="false" />
-          <Property Name="value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="prodExtraKeys" Relationship="Self.FK_productExtraData_ToMetaKeys" FromRole="productExtraData" ToRole="prodExtraKeys" />
-          <NavigationProperty Name="productTBL" Relationship="Self.FK_productExtraData_ToproductTBL" FromRole="productExtraData" ToRole="productTBL" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="prodExtraKeys" Relationship="dbModel.FK_productExtraData_ToMetaKeys" FromRole="productExtraData" ToRole="prodExtraKeys" />
+          <NavigationProperty Name="productTBL" Relationship="dbModel.FK_productExtraData_ToproductTBL" FromRole="productExtraData" ToRole="productTBL" />
         </EntityType>
         <EntityType Name="productTBL">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prodName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Double" Nullable="false" />
           <Property Name="typeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="productExtraData" Relationship="Self.FK_productExtraData_ToproductTBL" FromRole="productTBL" ToRole="productExtraData" />
-          <NavigationProperty Name="productTypeTBL" Relationship="Self.FK_productTBL_ToProdTypeTBL" FromRole="productTBL" ToRole="productTypeTBL" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="productExtraData" Relationship="dbModel.FK_productExtraData_ToproductTBL" FromRole="productTBL" ToRole="productExtraData" />
+          <NavigationProperty Name="productTypeTBL" Relationship="dbModel.FK_productTBL_ToProdTypeTBL" FromRole="productTBL" ToRole="productTypeTBL" />
         </EntityType>
         <EntityType Name="productTypeTBL">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="typeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="typeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="productTBL" Relationship="Self.FK_productTBL_ToProdTypeTBL" FromRole="productTypeTBL" ToRole="productTBL" />
+          <NavigationProperty Name="productTBL" Relationship="dbModel.FK_productTBL_ToProdTypeTBL" FromRole="productTypeTBL" ToRole="productTBL" />
+        </EntityType>
+        <EntityType Name="productView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="prodName" />
+            <PropertyRef Name="KeyName" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="typeName" />
+            <PropertyRef Name="productID" />
+            <PropertyRef Name="keyID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="prodName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="typeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productID" Type="Int32" Nullable="false" />
+          <Property Name="keyID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_productExtraData_ToMetaKeys">
-          <End Role="prodExtraKeys" Type="Self.prodExtraKeys" Multiplicity="1" />
-          <End Role="productExtraData" Type="Self.productExtraData" Multiplicity="*" />
+          <End Type="dbModel.prodExtraKeys" Role="prodExtraKeys" Multiplicity="1" />
+          <End Type="dbModel.productExtraData" Role="productExtraData" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="prodExtraKeys">
               <PropertyRef Name="Id" />
@@ -151,8 +222,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_productExtraData_ToproductTBL">
-          <End Role="productTBL" Type="Self.productTBL" Multiplicity="1" />
-          <End Role="productExtraData" Type="Self.productExtraData" Multiplicity="*" />
+          <End Type="dbModel.productTBL" Role="productTBL" Multiplicity="1" />
+          <End Type="dbModel.productExtraData" Role="productExtraData" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="productTBL">
               <PropertyRef Name="Id" />
@@ -163,8 +234,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_productTBL_ToProdTypeTBL">
-          <End Role="productTypeTBL" Type="Self.productTypeTBL" Multiplicity="1" />
-          <End Role="productTBL" Type="Self.productTBL" Multiplicity="*" />
+          <End Type="dbModel.productTypeTBL" Role="productTypeTBL" Multiplicity="1" />
+          <End Type="dbModel.productTBL" Role="productTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="productTypeTBL">
               <PropertyRef Name="Id" />
@@ -174,65 +245,61 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="prodExtraKeys" EntityType="Self.prodExtraKeys" />
-          <EntitySet Name="productExtraData" EntityType="Self.productExtraData" />
-          <EntitySet Name="productTBL" EntityType="Self.productTBL" />
-          <EntitySet Name="productTypeTBL" EntityType="Self.productTypeTBL" />
-          <AssociationSet Name="FK_productExtraData_ToMetaKeys" Association="Self.FK_productExtraData_ToMetaKeys">
-            <End Role="prodExtraKeys" EntitySet="prodExtraKeys" />
-            <End Role="productExtraData" EntitySet="productExtraData" />
-          </AssociationSet>
-          <AssociationSet Name="FK_productExtraData_ToproductTBL" Association="Self.FK_productExtraData_ToproductTBL">
-            <End Role="productTBL" EntitySet="productTBL" />
-            <End Role="productExtraData" EntitySet="productExtraData" />
-          </AssociationSet>
-          <AssociationSet Name="FK_productTBL_ToProdTypeTBL" Association="Self.FK_productTBL_ToProdTypeTBL">
-            <End Role="productTypeTBL" EntitySet="productTypeTBL" />
-            <End Role="productTBL" EntitySet="productTBL" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities1">
+        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities">
           <EntitySetMapping Name="prodExtraKeys">
             <EntityTypeMapping TypeName="dbModel.prodExtraKeys">
               <MappingFragment StoreEntitySet="prodExtraKeys">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
                 <ScalarProperty Name="KeyDescription" ColumnName="KeyDescription" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productExtraData">
             <EntityTypeMapping TypeName="dbModel.productExtraData">
               <MappingFragment StoreEntitySet="productExtraData">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="productID" ColumnName="productID" />
-                <ScalarProperty Name="keyID" ColumnName="keyID" />
                 <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="keyID" ColumnName="keyID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productTBL">
             <EntityTypeMapping TypeName="dbModel.productTBL">
               <MappingFragment StoreEntitySet="productTBL">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="prodName" ColumnName="prodName" />
-                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="prodName" ColumnName="prodName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productTypeTBL">
             <EntityTypeMapping TypeName="dbModel.productTypeTBL">
               <MappingFragment StoreEntitySet="productTypeTBL">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="typeName" ColumnName="typeName" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productView">
+            <EntityTypeMapping TypeName="dbModel.productView">
+              <MappingFragment StoreEntitySet="productView">
+                <ScalarProperty Name="keyID" ColumnName="keyID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="prodName" ColumnName="prodName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

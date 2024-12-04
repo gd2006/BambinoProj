@@ -24,6 +24,7 @@ namespace BambinoProj
         public string prodName { get; set; }
         public double price { get; set; }
         public int typeID { get; set; }
+        public string Location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<productExtraData> productExtraData { get; set; }
