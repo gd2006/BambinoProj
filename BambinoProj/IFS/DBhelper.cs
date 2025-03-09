@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ namespace BambinoProj.IFS
         public static List<productTBL> productList;
         public static List<productTypeTBL> productTypeList;
         public static List<productView> productViewList;
-
+        public static List<EmployesTBL> employesList;
+        public static List<ClientsTBL> clientsList;
         public static void init()
         {
             db = new dbEntities();
@@ -29,7 +31,10 @@ namespace BambinoProj.IFS
             loadproductList();
             loadproductTypeList();
             loadPrductViewList();
+            loadEmployesList();
+            loadclientList();
         }
+
 
         public static void loadPrductViewList()
         {
@@ -52,7 +57,17 @@ namespace BambinoProj.IFS
         {
             productTypeList = (from s in db.productTypeTBL orderby s.typeName select s).ToList();
         }
+        public static void loadclientList()
+        {
+            clientsList = (from s in db.ClientsTBL select s).ToList();
 
+        }
+
+        public static void loadEmployesList()
+        {
+            employesList = (from s in db.EmployesTBL  select s).ToList();
+            employesList = employesList.OrderBy(x => x.EmployedLastName).ThenBy(x => x.EmployedName).ToList();
+        }
         #endregion
 
 
@@ -116,8 +131,38 @@ namespace BambinoProj.IFS
                 return null;
             }
         }
+
+        public static ClientsTBL addclients(ClientsTBL client)
+        {
+            try
+            {
+                db.ClientsTBL.Add(client);
+                db.SaveChanges();
+                loadclientList();
+                return client;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+            public static EmployesTBL addEmployed(EmployesTBL employed)
+        {
+            try
+            {
+                db.EmployesTBL.Add(employed);
+                db.SaveChanges();
+                loadEmployesList();
+                return employed;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         #endregion
-         
+
 
         #region update function 
         public static bool updateExtraKey(prodExtraKeys prodEK)
@@ -149,6 +194,7 @@ namespace BambinoProj.IFS
                 toUpdate.productID = prodEData.productID;
                 db.SaveChanges();
                 loadproductExtraDataList();
+                loadPrductViewList();
                 return true;
             }
             catch (Exception ex)
@@ -166,6 +212,7 @@ namespace BambinoProj.IFS
                 toUpdate.price = product.price;
                 toUpdate.prodName = product.prodName;
                 toUpdate.typeID = product.typeID;
+                toUpdate.inStock = product.inStock;
                 db.SaveChanges();
                 loadproductList();
                 return true;
@@ -186,6 +233,54 @@ namespace BambinoProj.IFS
                 toUpdate.description = prodType.description;
                 db.SaveChanges();
                 loadproductTypeList();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public static bool updateClient(ClientsTBL client)
+        {
+            try
+            {
+                ClientsTBL toUpdate = (from s in db.ClientsTBL where s.Id == client.Id select s).FirstOrDefault();
+                if (toUpdate == null)
+                    return false;
+                toUpdate.clientName = client.clientName;
+                toUpdate.clientLastName = client.clientLastName;
+                toUpdate.clientPhone = client.clientPhone;
+                toUpdate.paymentMethod = client.paymentMethod;
+                toUpdate.clientInstitutionSymbol = client.clientInstitutionSymbol;
+                toUpdate.Email = client.Email;
+                db.SaveChanges();
+                loadclientList();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public static bool updateEmployesList(EmployesTBL employed)
+        {
+            try
+            {
+                EmployesTBL toUpdate = (from s in db.EmployesTBL where s.Id == employed.Id select s).FirstOrDefault();
+                if (toUpdate == null)
+                    return false;
+                toUpdate.EmployedName = employed.EmployedName;
+                toUpdate.EmployedLastName = employed.EmployedLastName;
+                toUpdate.Email = employed.Email;
+                toUpdate.BirthDate = employed.BirthDate;
+                toUpdate.PhoneNumber = employed.PhoneNumber;
+                toUpdate.NameOfTheBank = employed.NameOfTheBank;
+                toUpdate.BankBranchNumber = employed.BankBranchNumber;
+                toUpdate.BankAccountNumber = employed.BankAccountNumber;
+
+                db.SaveChanges();
+                loadEmployesList();
                 return true;
             }
             catch (Exception ex)

@@ -79,6 +79,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -92,10 +93,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\characteristicsProductWin.cs">
+    <Compile Include="ClientsTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployesTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clients\addClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\characteristicsProductWin.Designer.cs">
+    <Compile Include="Forms\Clients\addClient.Designer.cs">
+      <DependentUpon>addClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employes\addEmployedWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employes\addEmployedWin.Designer.cs">
+      <DependentUpon>addEmployedWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employes\updateEmploys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employes\updateEmploys.Designer.cs">
+      <DependentUpon>updateEmploys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductForms\updateProductWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductForms\updateProductWin.Designer.cs">
+      <DependentUpon>updateProductWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductForms\characteristicsProductWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductForms\characteristicsProductWin.Designer.cs">
       <DependentUpon>characteristicsProductWin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProductForms\addExtraData.cs">
@@ -155,7 +186,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\characteristicsProductWin.resx">
+    <EmbeddedResource Include="Forms\Clients\addClient.resx">
+      <DependentUpon>addClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employes\addEmployedWin.resx">
+      <DependentUpon>addEmployedWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employes\updateEmploys.resx">
+      <DependentUpon>updateEmploys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductForms\updateProductWin.resx">
+      <DependentUpon>updateProductWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductForms\characteristicsProductWin.resx">
       <DependentUpon>characteristicsProductWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductForms\addExtraData.resx">
@@ -187,6 +230,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ClientsTBL.datasource" />
+    <None Include="Properties\DataSources\EmployesTBL.datasource" />
     <None Include="Properties\DataSources\prodExtraKeys.datasource" />
     <None Include="Properties\DataSources\productExtraData.datasource" />
     <None Include="Properties\DataSources\productTBL.datasource" />

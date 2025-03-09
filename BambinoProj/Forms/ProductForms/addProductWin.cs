@@ -100,5 +100,40 @@ namespace BambinoProj.Forms.ProductForms
             List<productView> lst = DBhelper.productViewList.Where(x => x.productID == selectedProduct.Id).ToList();
             dgvExtraData.DataSource = lst;
         }
+
+        private void txtboxProductLocation__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtboxProductPrice__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addTypeOfProduct_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void productLocation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void typeId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addPriceToProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvExtraData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

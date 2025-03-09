@@ -1,4 +1,6 @@
 ﻿using BambinoProj.Forms;
+using BambinoProj.Forms.Clients;
+using BambinoProj.Forms.Employes;
 using BambinoProj.Forms.ProductForms;
 using BambinoProj.IFS;
 using System;
@@ -228,5 +230,165 @@ namespace BambinoProj
             current.Show();
         
     }
+
+        private void מחיקתמוצרToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is updateProductWin)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new updateProductWin()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        }
+
+        private void הוספתעובדToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is addEmployedWin)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new addEmployedWin()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+  
     }
-}
+
+        private void עדכוןעובדToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                            if (current != null)
+
+            {
+
+                if (current is updateEmploys)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new updateEmploys()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+
+        }
+
+        private void הוסףלקוחToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (current != null)
+
+            {
+
+                if (current is addClient)
+
+                {
+
+
+
+                    return;
+
+                }
+
+                current.Close();
+
+            }
+
+            current = new addClient()
+
+            {
+
+                Dock = DockStyle.Fill,
+
+                TopLevel = false,
+
+                TopMost = true
+
+            };
+
+            mainPanel.Controls.Add(current);
+
+
+
+            current.Show();
+        }
+    }
+    }
+

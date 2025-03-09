@@ -34,10 +34,16 @@
             this.productWin = new System.Windows.Forms.ToolStripMenuItem();
             this.addProductWin = new System.Windows.Forms.ToolStripMenuItem();
             this.addTypeProductwin = new System.Windows.Forms.ToolStripMenuItem();
+            this.מידענוסףלמוצרToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnProductUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.עובדיםToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.הוספתעובדToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.עדכוןעובדToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.מאפיינימוצרToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.מידענוסףלמוצרToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.לקוחותToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.הוסףלקוחToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +73,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productWin,
+            this.עובדיםToolStripMenuItem,
+            this.לקוחותToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -79,7 +87,8 @@
             this.productWin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addProductWin,
             this.addTypeProductwin,
-            this.מידענוסףלמוצרToolStripMenuItem});
+            this.מידענוסףלמוצרToolStripMenuItem,
+            this.btnProductUpdate});
             this.productWin.Name = "productWin";
             this.productWin.Size = new System.Drawing.Size(88, 29);
             this.productWin.Text = "מוצרים ";
@@ -98,6 +107,43 @@
             this.addTypeProductwin.Text = "הוספת קטגוריית המוצר";
             this.addTypeProductwin.Click += new System.EventHandler(this.updateProductwin_Click);
             // 
+            // מידענוסףלמוצרToolStripMenuItem
+            // 
+            this.מידענוסףלמוצרToolStripMenuItem.Name = "מידענוסףלמוצרToolStripMenuItem";
+            this.מידענוסףלמוצרToolStripMenuItem.Size = new System.Drawing.Size(297, 34);
+            this.מידענוסףלמוצרToolStripMenuItem.Text = "מידע נוסף למוצר ";
+            this.מידענוסףלמוצרToolStripMenuItem.Click += new System.EventHandler(this.מידענוסףלמוצרToolStripMenuItem_Click);
+            // 
+            // btnProductUpdate
+            // 
+            this.btnProductUpdate.Name = "btnProductUpdate";
+            this.btnProductUpdate.Size = new System.Drawing.Size(297, 34);
+            this.btnProductUpdate.Text = "עדכון מוצר ";
+            this.btnProductUpdate.Click += new System.EventHandler(this.מחיקתמוצרToolStripMenuItem_Click);
+            // 
+            // עובדיםToolStripMenuItem
+            // 
+            this.עובדיםToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.הוספתעובדToolStripMenuItem,
+            this.עדכוןעובדToolStripMenuItem});
+            this.עובדיםToolStripMenuItem.Name = "עובדיםToolStripMenuItem";
+            this.עובדיםToolStripMenuItem.Size = new System.Drawing.Size(80, 29);
+            this.עובדיםToolStripMenuItem.Text = "עובדים";
+            // 
+            // הוספתעובדToolStripMenuItem
+            // 
+            this.הוספתעובדToolStripMenuItem.Name = "הוספתעובדToolStripMenuItem";
+            this.הוספתעובדToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.הוספתעובדToolStripMenuItem.Text = "הוספת עובד";
+            this.הוספתעובדToolStripMenuItem.Click += new System.EventHandler(this.הוספתעובדToolStripMenuItem_Click);
+            // 
+            // עדכוןעובדToolStripMenuItem
+            // 
+            this.עדכוןעובדToolStripMenuItem.Name = "עדכוןעובדToolStripMenuItem";
+            this.עדכוןעובדToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.עדכוןעובדToolStripMenuItem.Text = "עדכון עובד ";
+            this.עדכוןעובדToolStripMenuItem.Click += new System.EventHandler(this.עדכוןעובדToolStripMenuItem_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,7 +155,7 @@
             // מאפיינימוצרToolStripMenuItem
             // 
             this.מאפיינימוצרToolStripMenuItem.Name = "מאפיינימוצרToolStripMenuItem";
-            this.מאפיינימוצרToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
+            this.מאפיינימוצרToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.מאפיינימוצרToolStripMenuItem.Text = "מאפייני מוצר";
             this.מאפיינימוצרToolStripMenuItem.Click += new System.EventHandler(this.מאפיינימוצרToolStripMenuItem_Click);
             // 
@@ -122,12 +168,20 @@
             this.mainPanel.Size = new System.Drawing.Size(1141, 540);
             this.mainPanel.TabIndex = 1;
             // 
-            // מידענוסףלמוצרToolStripMenuItem
+            // לקוחותToolStripMenuItem
             // 
-            this.מידענוסףלמוצרToolStripMenuItem.Name = "מידענוסףלמוצרToolStripMenuItem";
-            this.מידענוסףלמוצרToolStripMenuItem.Size = new System.Drawing.Size(297, 34);
-            this.מידענוסףלמוצרToolStripMenuItem.Text = "מידע נוסף למוצר ";
-            this.מידענוסףלמוצרToolStripMenuItem.Click += new System.EventHandler(this.מידענוסףלמוצרToolStripMenuItem_Click);
+            this.לקוחותToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.הוסףלקוחToolStripMenuItem});
+            this.לקוחותToolStripMenuItem.Name = "לקוחותToolStripMenuItem";
+            this.לקוחותToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
+            this.לקוחותToolStripMenuItem.Text = "לקוחות";
+            // 
+            // הוסףלקוחToolStripMenuItem
+            // 
+            this.הוסףלקוחToolStripMenuItem.Name = "הוסףלקוחToolStripMenuItem";
+            this.הוסףלקוחToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.הוסףלקוחToolStripMenuItem.Text = "הוסף לקוח";
+            this.הוסףלקוחToolStripMenuItem.Click += new System.EventHandler(this.הוסףלקוחToolStripMenuItem_Click);
             // 
             // mainWin
             // 
@@ -159,6 +213,12 @@
         private System.Windows.Forms.ToolStripMenuItem מאפיינימוצרToolStripMenuItem;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStripMenuItem מידענוסףלמוצרToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnProductUpdate;
+        private System.Windows.Forms.ToolStripMenuItem עובדיםToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem הוספתעובדToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem עדכוןעובדToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem לקוחותToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem הוסףלקוחToolStripMenuItem;
     }
 }
 

@@ -81,31 +81,34 @@
             // 
             this.addPriceToProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addPriceToProduct.AutoSize = true;
-            this.addPriceToProduct.Location = new System.Drawing.Point(961, 141);
+            this.addPriceToProduct.Location = new System.Drawing.Point(1186, 141);
             this.addPriceToProduct.Name = "addPriceToProduct";
             this.addPriceToProduct.Size = new System.Drawing.Size(43, 20);
             this.addPriceToProduct.TabIndex = 6;
             this.addPriceToProduct.Text = "מחיר";
+            this.addPriceToProduct.Click += new System.EventHandler(this.addPriceToProduct_Click);
             // 
             // typeId
             // 
             this.typeId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.typeId.AutoSize = true;
-            this.typeId.Location = new System.Drawing.Point(974, 213);
+            this.typeId.Location = new System.Drawing.Point(1199, 213);
             this.typeId.Name = "typeId";
             this.typeId.Size = new System.Drawing.Size(30, 20);
             this.typeId.TabIndex = 7;
             this.typeId.Text = "סוג";
+            this.typeId.Click += new System.EventHandler(this.typeId_Click);
             // 
             // productLocation
             // 
             this.productLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.productLocation.AutoSize = true;
-            this.productLocation.Location = new System.Drawing.Point(911, 289);
+            this.productLocation.Location = new System.Drawing.Point(1136, 289);
             this.productLocation.Name = "productLocation";
             this.productLocation.Size = new System.Drawing.Size(93, 20);
             this.productLocation.TabIndex = 17;
             this.productLocation.Text = "מיקום המוצר";
+            this.productLocation.Click += new System.EventHandler(this.productLocation_Click);
             // 
             // txtboxProductLocation
             // 
@@ -117,7 +120,7 @@
             this.txtboxProductLocation.BorderSize = 2;
             this.txtboxProductLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtboxProductLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtboxProductLocation.Location = new System.Drawing.Point(761, 280);
+            this.txtboxProductLocation.Location = new System.Drawing.Point(986, 280);
             this.txtboxProductLocation.Margin = new System.Windows.Forms.Padding(4);
             this.txtboxProductLocation.Multiline = false;
             this.txtboxProductLocation.Name = "txtboxProductLocation";
@@ -129,6 +132,7 @@
             this.txtboxProductLocation.TabIndex = 16;
             this.txtboxProductLocation.Texts = "";
             this.txtboxProductLocation.UnderlinedStyle = false;
+            this.txtboxProductLocation._TextChanged += new System.EventHandler(this.txtboxProductLocation__TextChanged);
             // 
             // txtboxProductPrice
             // 
@@ -140,7 +144,7 @@
             this.txtboxProductPrice.BorderSize = 2;
             this.txtboxProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtboxProductPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtboxProductPrice.Location = new System.Drawing.Point(762, 131);
+            this.txtboxProductPrice.Location = new System.Drawing.Point(987, 131);
             this.txtboxProductPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtboxProductPrice.Multiline = false;
             this.txtboxProductPrice.Name = "txtboxProductPrice";
@@ -152,21 +156,23 @@
             this.txtboxProductPrice.TabIndex = 15;
             this.txtboxProductPrice.Texts = "";
             this.txtboxProductPrice.UnderlinedStyle = false;
+            this.txtboxProductPrice._TextChanged += new System.EventHandler(this.txtboxProductPrice__TextChanged);
             // 
             // addTypeOfProduct
             // 
             this.addTypeOfProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addTypeOfProduct.AutoSize = true;
-            this.addTypeOfProduct.Location = new System.Drawing.Point(907, 150);
+            this.addTypeOfProduct.Location = new System.Drawing.Point(1132, 150);
             this.addTypeOfProduct.Name = "addTypeOfProduct";
             this.addTypeOfProduct.Size = new System.Drawing.Size(0, 20);
             this.addTypeOfProduct.TabIndex = 14;
+            this.addTypeOfProduct.Click += new System.EventHandler(this.addTypeOfProduct_Click_1);
             // 
             // addNameOfProduct
             // 
             this.addNameOfProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addNameOfProduct.AutoSize = true;
-            this.addNameOfProduct.Location = new System.Drawing.Point(929, 74);
+            this.addNameOfProduct.Location = new System.Drawing.Point(1154, 74);
             this.addNameOfProduct.Name = "addNameOfProduct";
             this.addNameOfProduct.Size = new System.Drawing.Size(75, 20);
             this.addNameOfProduct.TabIndex = 13;
@@ -182,7 +188,7 @@
             this.txtboxProductName.BorderSize = 2;
             this.txtboxProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtboxProductName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtboxProductName.Location = new System.Drawing.Point(762, 65);
+            this.txtboxProductName.Location = new System.Drawing.Point(987, 65);
             this.txtboxProductName.Margin = new System.Windows.Forms.Padding(4);
             this.txtboxProductName.Multiline = false;
             this.txtboxProductName.Name = "txtboxProductName";
@@ -202,7 +208,7 @@
             this.cmboboxProductTypes.DisplayMember = "typeName";
             this.cmboboxProductTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboboxProductTypes.FormattingEnabled = true;
-            this.cmboboxProductTypes.Location = new System.Drawing.Point(762, 210);
+            this.cmboboxProductTypes.Location = new System.Drawing.Point(987, 210);
             this.cmboboxProductTypes.Name = "cmboboxProductTypes";
             this.cmboboxProductTypes.Size = new System.Drawing.Size(138, 28);
             this.cmboboxProductTypes.TabIndex = 11;
@@ -225,7 +231,7 @@
             this.addProductBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addProductBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.addProductBTN.ForeColor = System.Drawing.Color.White;
-            this.addProductBTN.Location = new System.Drawing.Point(903, 382);
+            this.addProductBTN.Location = new System.Drawing.Point(1128, 382);
             this.addProductBTN.Name = "addProductBTN";
             this.addProductBTN.Size = new System.Drawing.Size(101, 34);
             this.addProductBTN.TabIndex = 18;
@@ -238,8 +244,7 @@
             // 
             this.dgvProductData.AllowUserToAddRows = false;
             this.dgvProductData.AllowUserToDeleteRows = false;
-            this.dgvProductData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvProductData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductData.AutoGenerateColumns = false;
             this.dgvProductData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -274,7 +279,7 @@
             this.dgvProductData.RowHeadersVisible = false;
             this.dgvProductData.RowHeadersWidth = 62;
             this.dgvProductData.RowTemplate.Height = 28;
-            this.dgvProductData.Size = new System.Drawing.Size(716, 241);
+            this.dgvProductData.Size = new System.Drawing.Size(722, 241);
             this.dgvProductData.TabIndex = 19;
             this.dgvProductData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductData_CellContentClick);
             // 
@@ -362,9 +367,11 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cbxHiddenProducts);
             this.panel1.Controls.Add(this.dgvProductData);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(722, 240);
@@ -372,8 +379,10 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.dgvExtraData);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 249);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(722, 240);
@@ -383,8 +392,7 @@
             // 
             this.dgvExtraData.AllowUserToAddRows = false;
             this.dgvExtraData.AllowUserToDeleteRows = false;
-            this.dgvExtraData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvExtraData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvExtraData.AutoGenerateColumns = false;
             this.dgvExtraData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -410,8 +418,9 @@
             this.dgvExtraData.RowHeadersVisible = false;
             this.dgvExtraData.RowHeadersWidth = 62;
             this.dgvExtraData.RowTemplate.Height = 28;
-            this.dgvExtraData.Size = new System.Drawing.Size(719, 237);
+            this.dgvExtraData.Size = new System.Drawing.Size(719, 240);
             this.dgvExtraData.TabIndex = 0;
+            this.dgvExtraData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExtraData_CellContentClick);
             // 
             // prodNameDataGridViewTextBoxColumn1
             // 
@@ -454,7 +463,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1085, 489);
+            this.ClientSize = new System.Drawing.Size(1310, 637);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.addProductBTN);
             this.Controls.Add(this.productLocation);

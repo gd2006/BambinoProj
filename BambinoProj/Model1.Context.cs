@@ -25,6 +25,8 @@ namespace BambinoProj
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ClientsTBL> ClientsTBL { get; set; }
+        public virtual DbSet<EmployesTBL> EmployesTBL { get; set; }
         public virtual DbSet<prodExtraKeys> prodExtraKeys { get; set; }
         public virtual DbSet<productExtraData> productExtraData { get; set; }
         public virtual DbSet<productTBL> productTBL { get; set; }

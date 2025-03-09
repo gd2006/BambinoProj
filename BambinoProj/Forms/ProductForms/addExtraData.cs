@@ -28,7 +28,7 @@ namespace BambinoProj.Forms.ProductForms
             productExtraDataLst = DBhelper.productExtraDataList;
             productIdNameCBX.DataSource = prodList;
             ProductKeyCBX.DataSource = prodExtraKeysList;
-            dgvProductExtreData.DataSource = productExtraDataLst;
+            dgvProductExtreData.DataSource = productExtraDataLst ;
         }
         private void addNameOfProduct_Click(object sender, EventArgs e)
         {
